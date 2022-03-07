@@ -1,0 +1,77 @@
+<html> 
+<head>
+    <title>Greeting Message</title> 
+    <style>
+#lbl {
+    font-family: helvetica;
+    font-size: 36px;
+    color: #626262;
+    padding: 5px;
+    border: 1px solid #ececec;
+    text-align: center;
+    line-height: 1.5;
+    height:85%
+
+
+}
+#date{
+    font-size:large;
+}
+    </style>
+</head>
+<body>
+    <div id="lbl"></div>
+</body>
+
+<script>
+    let weekday = new Array(7);
+    weekday[0] = "søndag";
+    weekday[1] = "mandag";
+    weekday[2] = "tirsdag";
+    weekday[3] = "onsdag";
+    weekday[4] = "torsdag";
+    weekday[5] = "fredag";
+    weekday[6] = "lørdag";
+    
+    let month = new Array(12);
+    month[0] = "januar";
+    month[1] = "februar";
+    month[2] = "mars";
+    month[3] = "april";
+    month[4] = "mai";
+    month[5] = "juni";
+    month[6] = "juli";
+    month[7] = "august";
+    month[8] = "september";
+    month[9] = "oktober";
+    month[10] = "november";
+    month[11] = "desember";
+    
+    let today = new Date();
+    let hrs = today.getHours();
+    let dayOfWeek = weekday[today.getDay()];
+    let monthstring = month[today.getMonth()];
+    // Get week number
+    today.setHours(0,0,0,0);
+    today.setDate(today.getDate() + 3 - (today.getDay() + 6) % 7);
+    let weekOne = new Date(today.getFullYear(), 0, 4);
+    let weekNum = 1 + Math.round(((today.getTime() - weekOne.getTime()) / 86400000
+            - 3 + (weekOne.getDay() + 6) % 7) / 7)
+    let date = dayOfWeek + ' ' + today.getDate() + '. ' + monthstring + ' ' + today.getFullYear() + '<br/>Uke ' + weekNum;
+
+    let greet;
+
+    if (05 <= hrs && hrs < 12)
+        greet = 'God morgen ';
+    else if (12 <= hrs && hrs < 17)
+        greet = 'God ettermiddag ';
+    else if (17 <= hrs && hrs <= 24)
+        greet = 'God kveld ';
+    else if (hrs < 05) {
+        greet = 'God natt '
+    }
+
+    document.getElementById('lbl').innerHTML =
+        greet+="Peter!" + `<div id="date"> Det er ${date}</div>`;
+</script> 
+</html>

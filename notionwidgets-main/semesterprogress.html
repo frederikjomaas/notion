@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <title>Semester Progress</title>
+    <style>
+        #lbl {
+            font-family: helvetica;
+            font-size: 36px;
+            color: #626262;
+            padding: 5px;
+            border: 1px solid #ececec;
+            text-align: center;
+            line-height: 1.5;
+            height: 85%
+        }
+
+        #date {
+            font-size: large;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="lbl"></div>
+</body>
+
+<script>
+    var today = new Date();
+    var semester_start = new Date(2022, 00, 10);
+    var semester_end = new Date(2022, 04, 30);
+    var progress = ((today.valueOf() - semester_start.valueOf())/(semester_end.valueOf() - semester_start.valueOf())*100).toFixed(1);
+    var msg = progress + "%";
+    
+    document.getElementById('lbl').innerHTML = '<div id="date"> Semesterprogresjon: </div>' + msg;
+</script>
+
+</html>
