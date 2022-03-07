@@ -33,7 +33,7 @@
     var months = today.getMonth() - birth.getMonth();
     if (months < 0 || (months === 0 && today.getDate() < birth.getDate())) {
         years --;
-        lastbirth = new Date(today.getFullYear()-1, 08, 21, 08);
+        lastbirth = new Date(today.getFullYear()-1, 03, 21, 08);
     }
     var days = Math.floor((today - lastbirth) / (1000 * 3600 * 24));
     var hrs = Math.floor(today.getHours() - birth.getHours());
